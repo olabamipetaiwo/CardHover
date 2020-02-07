@@ -1,0 +1,116 @@
+$white: hsl(0, 0%, 100%);
+$light: hsl(0, 0%, 94%);
+
+.container {
+    background-color:$white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+
+.box {
+    width:90%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(25rem,1fr));
+    grid-gap:2rem;   
+    padding-bottom:3rem;
+
+    @include respond(phone) { 
+        grid-template-columns:repeat(auto-fit,minmax(40rem,1fr));
+    }
+}
+
+.card {
+    background-color:$light;
+    height:40rem;
+    cursor:pointer;
+    // transition: 0.3s ease-in-out;
+    transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    background-repeat: no-repeat;
+    background-position:20% 50%;
+    color:$white;
+    // display:flex;
+    // justify-content:center;
+    // align-items: flex-end;
+    position:relative;
+    overflow:hidden;
+
+    &-1 {
+        background-image: url('../../images/r.jpg');
+    }
+
+    &-2 {
+        background-image: url('../../images/b.jpeg');
+    }
+
+    &-3 {
+        background-image: url('../../images/c.jpeg');
+    }
+
+    &-4 {
+        background-image: url('../../images/d.jpeg');
+    }
+
+    &:hover {
+        background-position:20% 90%;
+    }
+
+    &:hover .card__content {
+       // transform:translateY(0);
+       top:0;
+       //background-color: rgba(0, 0, 0, 0.416);
+
+       background-image: radial-gradient( 
+        rgba(46, 45, 45, 0.673),
+        rgba(51, 44, 47, 0.469));
+    }
+
+    &__content {
+        width:100%;
+        height:100%;
+        text-align: center;
+        @include flexCenter;
+        flex-direction:column;
+        transition: .3s ease-in-out;
+        position:absolute;
+        top:62%;
+        left:0;
+        background-color: rgba(0, 0, 0, 0);
+
+        @include respond(phone) { 
+          top:0;
+        }
+        //transform:translateY(90%);
+        
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom:2rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom:3rem;
+            width:65%;
+        }
+
+        button {
+            cursor:pointer;
+            outline:none;
+            border:none;
+            font-weight:600;
+            background-color: black;
+            padding:1rem 2rem;
+            color:$white;
+            transition: .3s ease-in-out;
+
+            &:hover {
+                color: black;
+                background-color: $white;
+            }
+        }
+    }
+}
